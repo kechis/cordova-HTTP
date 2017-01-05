@@ -46,12 +46,12 @@ var http = {
     validateDomainName: function(validate, success, failure) {
         return exec(success, failure, "CordovaHttpPlugin", "validateDomainName", [validate]);
     },
-    post: function(url, params, headers, success, failure) {
+    postData: function(url, params, headers, success, failure) {
         headers = mergeHeaders(this.headers, headers);
-        return exec(success, failure, "CordovaHttpPlugin", "post", [url, params, headers]);
+        return exec(success, failure, "CordovaHttpPlugin", "postData", [url, params, headers]);
     },
-    postJson: function(url, json, headers, success, failure) {
-        return exec(success, failure, "CordovaHttpPlugin", "postJson", [url, json, headers]);
+    post: function(url, json, headers, success, failure) {
+        return exec(success, failure, "CordovaHttpPlugin", "post", [url, json, headers]);
     },
     get: function(url, params, headers, success, failure) {
         headers = mergeHeaders(this.headers, headers);
@@ -155,11 +155,11 @@ if (typeof angular !== "undefined") {
             validateDomainName: function(validate) {
                 return makePromise(http.validateDomainName, [validate]);
             },
-            post: function(url, params, headers) {
-                return makePromise(http.post, [url, params, headers], true);
+            postData: function(url, params, headers) {
+                return makePromise(http.postData, [url, params, headers], true);
             },
-            postJson: function(url, json, headers) {
-                return makePromise(http.postJson, [url, json, headers], true);
+            post: function(url, json, headers) {
+                return makePromise(http.post, [url, json, headers], true);
             },
             get: function(url, params, headers) {
                 return makePromise(http.get, [url, params, headers], true);
